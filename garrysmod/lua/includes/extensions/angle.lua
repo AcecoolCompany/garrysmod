@@ -16,3 +16,17 @@ function meta:SnapTo( component, degrees )
 	return self
 
 end
+
+
+--[[---------------------------------------------------------
+	Angle Snap to nearest interval of degrees for all components.. SnapTo handles error checking, therefore we can skip it in this helper function.
+	ie instead of 
+		local ang = ent:GetAngles( ):SnapTo( "p", 45 ):SnapTo( "y", 45 ):SnapTo( "r", 45 );
+	it becomes
+		local ang = ent:GetAngles( ):SnapAllTo( 45, 45, 45 );
+-----------------------------------------------------------]]
+function meta:SnapAllTo( pitch, yaw, roll )
+
+	return self:SnapTo( "pitch", pitch ):SnapTo( "yaw", yaw ):SnapTo( "roll", roll );
+
+end
